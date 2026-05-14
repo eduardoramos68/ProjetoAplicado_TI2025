@@ -8,6 +8,7 @@ CREATE DATABASE IF NOT EXISTS negrao_estoque
 
 USE negrao_estoque;
 
+-- PRODUTO
 CREATE TABLE IF NOT EXISTS Produto (
   idProduto     INT           NOT NULL AUTO_INCREMENT,
   sku           VARCHAR(50)   NOT NULL UNIQUE COMMENT 'Código único do produto',
@@ -33,5 +34,35 @@ INSERT INTO Produto (sku, nome, descricao, preco, categoria, marca, unidadeMedid
 ('LIXA-001', 'Lixa para Madeira #120',     'Lixa folha para madeira grão 120', 2.30, 'Abrasivos', 'Norton', 'un'),
 ('ANEL-001', 'Anel de Vedação EPDM 1/2"',  'Anel de vedação borracha EPDM para tubulação 1/2"', 1.10, 'Hidráulica', 'Fortlev', 'un'),
 ('TINTA-001', 'Tinta Látex Branco 18L',    'Tinta látex PVA para paredes internas branca 18 litros', 189.90, 'Tintas', 'Suvinil', 'un');
+
+-- USUARIO
+CREATE TABLE IF NOT EXISTS Usuario (
+	idUsuario INT NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(45) NOT NULL,
+	senha VARCHAR(255) NOT NULL,
+	email VARCHAR(45) NOT NULL UNIQUE, 
+	criadoEm TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  atualizadoEm TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (idUsuario)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- PERFIL
+CREATE TABLE IF NOT EXISTS Perfil ( 
+  idPerfil INT NOT NULL AUTO_INCREMENT, 
+	nome VARCHAR(45) NOT NULL, 
+	permissao VARCHAR(45) NOT NULL, 
+	criadoEm TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	atualizadoEm TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (idPerfil)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- USUARIO_PERFIL
+CREATE TABLE IF NOT EXISTS Usuario_Perfil ( 
+  idUsuario INT NOT NULL, 
+  idPerfil INT NOT NULL, 
+  PRIMARY KEY (idUsuario, idPerfil), 
+  FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario), 
+  FOREIGN KEY (idPerfil) REFERENCES Perfil(idPerfil)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 
 SELECT 'Banco criado com sucesso!' AS Resultado;
