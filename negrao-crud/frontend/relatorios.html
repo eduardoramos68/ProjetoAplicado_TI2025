@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatórios · Ferragens Negrão</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- Loading -->
+<div id="loading"><div class="spinner"></div></div>
+
+<!-- Toasts -->
+<div id="toasts"></div>
+
+<!-- Shell -->
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div>
+        <img src="img/Logo.PNG" alt="Logo" />
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-secao">Principal</div>
+      <a class="nav-item ativo" href="relatorios.html">
+        <div class="nav-icone">R</div>
+        <span>Relatórios</span>
+      </a>
+
+      <div class="nav-sep"></div>
+      <div class="nav-secao">Cadastros</div>
+
+      <a class="nav-item" href="index.html">
+        <div class="nav-icone">P</div>
+        <span>Produtos</span>
+      </a>
+
+      <a class="nav-item" href="#">
+        <div class="nav-icone">E</div>
+        <span>Estoque</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-titulo">Ferragens Negrão</div>
+      <div class="topbar-sub">Sistema de Gestão · UniSenai</div>
+      <div class="topbar-avatar">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
+
+      <!-- Cabeçalho -->
+      <div class="pagina-header">
+        <div>
+          <h1>Relatórios</h1>
+          <p>Dashboard e métricas do sistema</p>
+        </div>
+      </div>
+
+      <!-- Indicadores Rápidos (Cards) -->
+      <div class="dashboard-cards">
+        <div class="card-metric">
+          <span class="card-label">Total Produtos</span>
+          <span class="card-value" id="cardTotalProdutos">—</span>
+        </div>
+        <div class="card-metric">
+          <span class="card-label">Valor Estoque</span>
+          <span class="card-value" id="cardValorEstoque">—</span>
+        </div>
+        <div class="card-metric">
+          <span class="card-label">Categorias</span>
+          <span class="card-value" id="cardCategorias">—</span>
+        </div>
+        <div class="card-metric">
+          <span class="card-label">Produto Mais Caro</span>
+          <span class="card-value font-premium" id="cardProdutoMaisCaro">—</span>
+        </div>
+      </div>
+
+      <!-- Layout Grid do Dashboard -->
+      <div class="dashboard-grid">
+        
+        <!-- Produtos por Categoria -->
+        <div class="painel-tabela widget-box">
+          <div class="tabela-titulo">Produtos por Categoria</div>
+          <div class="widget-body" id="categoriasList">
+            <div class="loading-placeholder">Carregando dados...</div>
+          </div>
+        </div>
+
+        <!-- Estoque Baixo -->
+        <div class="painel-tabela widget-box">
+          <div class="tabela-titulo">Estoque Baixo</div>
+          <div class="tabela-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th style="text-align: right; padding-right: 24px; width: 80px;">Qtd</th>
+                </tr>
+              </thead>
+              <tbody id="estoqueBaixoTbody">
+                <tr><td colspan="2" class="td-vazio">Carregando...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Produtos Mais Caros -->
+      <div class="painel-tabela" style="margin-top: 24px;">
+        <div class="tabela-titulo">Produtos Mais Caros</div>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Marca</th>
+                <th>Preço</th>
+              </tr>
+            </thead>
+            <tbody id="maisCarosTbody">
+              <tr><td colspan="4" class="td-vazio">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/relatorios.js"></script>
+</body>
+</html>

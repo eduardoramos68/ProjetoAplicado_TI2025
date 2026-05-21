@@ -58,7 +58,7 @@ function renderTabela(lista, total) {
     total === 0 ? 'Nenhum produto encontrado' : `${total} produto${total !== 1 ? 's' : ''} encontrado${total !== 1 ? 's' : ''}`;
 
   if (!lista.length) {
-    tbody.innerHTML = `<tr><td colspan="8" class="td-vazio">Nenhum produto encontrado</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="10" class="td-vazio">Nenhum produto encontrado</td></tr>`;
     return;
   }
 
@@ -72,6 +72,7 @@ function renderTabela(lista, total) {
       <td>${esc(p.categoria || '—')}</td>
       <td>${esc(p.marca || '—')}</td>
       <td class="td-un">${esc(p.unidadeMedida || '—')}</td>
+      <td><span style="font-weight: 600; color: ${p.estoque < 5 ? '#c0392b' : 'inherit'}">${p.estoque ?? 0}</span></td>
       <td class="td-acoes">
         <div class="acoes-grupo">
           <button class="btn-acao btn-editar" onclick="abrirEditar(${p.idProduto})" title="Editar">
@@ -116,6 +117,7 @@ async function abrirEditar(id) {
     document.getElementById('iCategoria').value = p.categoria  || '';
     document.getElementById('iMarca').value     = p.marca      || '';
     document.getElementById('iUnidade').value   = p.unidadeMedida || '';
+    document.getElementById('iEstoque').value   = p.estoque ?? 0;
     limparErros();
     abrirModal();
   } catch (e) {
@@ -138,6 +140,7 @@ async function salvar(e) {
     categoria:     document.getElementById('iCategoria').value.trim(),
     marca:         document.getElementById('iMarca').value.trim(),
     unidadeMedida: document.getElementById('iUnidade').value.trim(),
+    estoque:       parseInt(document.getElementById('iEstoque').value) || 0,
   };
 
   let ok = true;

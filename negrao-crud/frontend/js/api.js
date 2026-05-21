@@ -16,3 +16,7 @@ const ProdutoAPI = {
   atualizar: (id, b)  => req('PUT', `/produtos/${id}`, b),
   excluir:   (id)     => req('DELETE', `/produtos/${id}`),
 };
+
+const DashboardAPI = {
+  obterDados: () => req('GET', '/dashboard'),
+};

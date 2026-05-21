@@ -41,7 +41,7 @@ const buscarProduto = async (req, res) => {
 
 const criarProduto = async (req, res) => {
   try {
-    const { sku, nome, descricao, preco, categoria, marca, unidadeMedida } = req.body;
+    const { sku, nome, descricao, preco, categoria, marca, unidadeMedida, estoque } = req.body;
 
     if (!sku || !nome || preco == null) {
       return res.status(400).json({ erro: 'SKU, nome e preço são obrigatórios' });
@@ -51,8 +51,8 @@ const criarProduto = async (req, res) => {
     if (dup) return res.status(409).json({ erro: 'SKU já cadastrado' });
 
     const [result] = await db.query(
-      'INSERT INTO Produto (sku, nome, descricao, preco, categoria, marca, unidadeMedida) VALUES (?,?,?,?,?,?,?)',
-      [sku, nome, descricao || null, preco, categoria || null, marca || null, unidadeMedida || null]
+      'INSERT INTO Produto (sku, nome, descricao, preco, categoria, marca, unidadeMedida, estoque) VALUES (?,?,?,?,?,?,?,?)',
+      [sku, nome, descricao || null, preco, categoria || null, marca || null, unidadeMedida || null, Number(estoque) || 0]
     );
 
     res.status(201).json({ mensagem: 'Produto criado', id: result.insertId });
@@ -63,7 +63,7 @@ const criarProduto = async (req, res) => {
 
 const atualizarProduto = async (req, res) => {
   try {
-    const { sku, nome, descricao, preco, categoria, marca, unidadeMedida } = req.body;
+    const { sku, nome, descricao, preco, categoria, marca, unidadeMedida, estoque } = req.body;
     const { id } = req.params;
 
     const [[exist]] = await db.query('SELECT idProduto FROM Produto WHERE idProduto = ?', [id]);
@@ -73,8 +73,8 @@ const atualizarProduto = async (req, res) => {
     if (dup) return res.status(409).json({ erro: 'SKU já utilizado por outro produto' });
 
     await db.query(
-      'UPDATE Produto SET sku=?, nome=?, descricao=?, preco=?, categoria=?, marca=?, unidadeMedida=? WHERE idProduto=?',
-      [sku, nome, descricao || null, preco, categoria || null, marca || null, unidadeMedida || null, id]
+      'UPDATE Produto SET sku=?, nome=?, descricao=?, preco=?, categoria=?, marca=?, unidadeMedida=?, estoque=? WHERE idProduto=?',
+      [sku, nome, descricao || null, preco, categoria || null, marca || null, unidadeMedida || null, Number(estoque) || 0, id]
     );
 
     res.json({ mensagem: 'Produto atualizado' });

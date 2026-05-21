@@ -10,6 +10,7 @@ app.use(express.json());
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 app.use('/api/produtos', require('./routes/produtos'));
+app.use('/api/dashboard', require('./routes/dashboard'));
 
 app.use((_, res) => res.status(404).json({ erro: 'Rota não encontrada' }));
 
