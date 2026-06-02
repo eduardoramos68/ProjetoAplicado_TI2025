@@ -34,4 +34,21 @@ INSERT INTO Produto (sku, nome, descricao, preco, categoria, marca, unidadeMedid
 ('ANEL-001', 'Anel de Vedação EPDM 1/2"',  'Anel de vedação borracha EPDM para tubulação 1/2"', 1.10, 'Hidráulica', 'Fortlev', 'un'),
 ('TINTA-001', 'Tinta Látex Branco 18L',    'Tinta látex PVA para paredes internas branca 18 litros', 189.90, 'Tintas', 'Suvinil', 'un');
 
+-- Tabela de Usuários
+CREATE TABLE IF NOT EXISTS Usuario (
+  idUsuario INT NOT NULL AUTO_INCREMENT,
+  email     VARCHAR(50) NOT NULL UNIQUE COMMENT 'E-mail para login',
+  senha     VARCHAR(64) NOT NULL COMMENT 'Senha em hash SHA-256',
+  nome      VARCHAR(100) NOT NULL,
+  criadoEm  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (idUsuario),
+  INDEX idx_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Inserir usuário administrador padrão (Senha: admin123)
+-- Hash SHA-256 de 'admin123' é '240789146b9f213cf8aa7174fa7fae9e2f9d2c67690623a39e80f2d80d21c3b5'
+INSERT INTO Usuario (email, senha, nome) 
+VALUES ('admin@negrao.com.br', '240789146b9f213cf8aa7174fa7fae9e2f9d2c67690623a39e80f2d80d21c3b5', 'Administrador')
+ON DUPLICATE KEY UPDATE email = email;
+
 SELECT 'Banco criado com sucesso!' AS Resultado;
