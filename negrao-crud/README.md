@@ -29,7 +29,7 @@ mysql -u root -p < backend/database.sql
 
 ### 2. Backend
 ```bash
-cd backend
+cd negrao-crud/backend
 cp .env.example .env        # edite com sua senha do MySQL
 npm install                 # instala as dependências
 npm run dev                 # http://localhost:3001

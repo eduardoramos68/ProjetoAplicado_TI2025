@@ -1,4 +1,4 @@
-const API = 'http://localhost:3001/api';
+const API = (window.location.protocol === 'file:') ? 'http://localhost:3001/api' : (window.location.origin + '/api');
 
 async function req(method, path, body) {
   const opts = { method, headers: { 'Content-Type': 'application/json' } };
@@ -19,4 +19,7 @@ const ProdutoAPI = {
 
 const DashboardAPI = {
   obterDados: () => req('GET', '/dashboard'),
+
+const AuthAPI = {
+  login: (loginInput, senha) => req('POST', '/auth/login', { login: loginInput, senha }),
 };

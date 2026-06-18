@@ -9,6 +9,30 @@ const S = {
 
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
+  // Exibir nome do usuário ativo logado no sistema
+  try {
+    const usr = JSON.parse(localStorage.getItem('usuarioLogado') || '{}');
+    if (usr && usr.nome) {
+      document.getElementById('activeUserName').textContent = usr.nome;
+    }
+  } catch (e) {
+    console.error('Erro ao ler dados da sessão:', e);
+  }
+
+  // Ação de logout (Sair)
+  const btnSair = document.getElementById('btnSair');
+  if (btnSair) {
+    btnSair.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('usuarioLogado');
+      localStorage.removeItem('tokenSessao');
+      toast('Sessão encerrada com sucesso! Até logo.', 'warn');
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1000);
+    });
+  }
+
   carregar();
 
   // filtros

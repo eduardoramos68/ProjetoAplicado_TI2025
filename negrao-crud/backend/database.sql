@@ -66,4 +66,21 @@ CREATE TABLE IF NOT EXISTS Usuario_Perfil (
   FOREIGN KEY (idPerfil) REFERENCES Perfil(idPerfil)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 
+-- Tabela de Usuários
+CREATE TABLE IF NOT EXISTS Usuario (
+  idUsuario INT NOT NULL AUTO_INCREMENT,
+  email     VARCHAR(50) NOT NULL UNIQUE COMMENT 'E-mail para login',
+  senha     VARCHAR(64) NOT NULL COMMENT 'Senha em hash SHA-256',
+  nome      VARCHAR(100) NOT NULL,
+  criadoEm  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (idUsuario),
+  INDEX idx_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Inserir usuário administrador padrão (Senha: admin123)
+-- Hash SHA-256 de 'admin123' é '240789146b9f213cf8aa7174fa7fae9e2f9d2c67690623a39e80f2d80d21c3b5'
+INSERT INTO Usuario (email, senha, nome) 
+VALUES ('admin@negrao.com.br', '240789146b9f213cf8aa7174fa7fae9e2f9d2c67690623a39e80f2d80d21c3b5', 'Administrador')
+ON DUPLICATE KEY UPDATE email = email;
+
 SELECT 'Banco criado com sucesso!' AS Resultado;
