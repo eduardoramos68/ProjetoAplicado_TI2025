@@ -33,7 +33,7 @@
 
     <nav class="sidebar-nav">
       <div class="nav-secao">Principal</div>
-      <a class="nav-item" href="#">
+      <a class="nav-item" href="relatorios.html">
         <div class="nav-icone">R</div>
         <span>Relatórios</span>
       </a>
@@ -41,7 +41,7 @@
       <div class="nav-sep"></div>
       <div class="nav-secao">Cadastros</div>
 
-      <a class="nav-item ativo" href="#">
+      <a class="nav-item ativo" href="index.html">
         <div class="nav-icone">P</div>
         <span>Produtos</span>
       </a>
@@ -127,6 +127,7 @@
                 <th>Categoria</th>
                 <th>Marca</th>
                 <th>Unid.</th>
+                <th>Estoque</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -212,6 +213,11 @@
             <option value="cx">Caixa (cx)</option>
             <option value="pc">Peça (pc)</option>
           </select>
+        </div>
+
+        <div class="fg">
+          <label for="iEstoque">Qtd. em Estoque</label>
+          <input class="input" id="iEstoque" type="number" min="0" step="1" placeholder="0" />
         </div>
 
       </div>

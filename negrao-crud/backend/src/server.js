@@ -14,6 +14,9 @@ app.use(express.static(path.join(__dirname, '../../frontend')));
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok' }));
 app.use('/api/produtos', require('./routes/produtos'));
+
+app.use('/api/dashboard', require('./routes/dashboard'));
+
 app.use('/api/auth', require('./routes/auth'));
 
 // Rota padrão para servir o index.html caso acesse caminhos indefinidos (SPA Friendly)

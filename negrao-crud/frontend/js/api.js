@@ -17,6 +17,9 @@ const ProdutoAPI = {
   excluir:   (id)     => req('DELETE', `/produtos/${id}`),
 };
 
+const DashboardAPI = {
+  obterDados: () => req('GET', '/dashboard'),
+
 const AuthAPI = {
   login: (loginInput, senha) => req('POST', '/auth/login', { login: loginInput, senha }),
 };
