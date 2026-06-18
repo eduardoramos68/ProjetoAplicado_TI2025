@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarDashboard();
 });
 
+// Variável global para armazenar a instância do gráfico de categorias
+let categoriasPieChart = null;
+
 async function carregarDashboard() {
   loading(true);
   try {
@@ -43,27 +46,73 @@ function preencherCards(cards) {
 }
 
 function renderCategorias(lista) {
-  const container = document.getElementById('categoriasList');
+  const canvas = document.getElementById('categoriasPieChart');
   
   if (!lista || !lista.length) {
-    container.innerHTML = '<div class="td-vazio">Nenhum dado por categoria disponível.</div>';
+    canvas.style.display = 'none';
     return;
   }
   
-  container.innerHTML = lista.map(cat => {
-    const pct = parseFloat(cat.porcentagem || 0).toFixed(0);
-    return `
-      <div class="categoria-item" style="margin-bottom: 16px;">
-        <div style="display: flex; justify-content: space-between; font-size: 13.5px; font-weight: 500; margin-bottom: 6px;">
-          <span>${esc(cat.categoria)}</span>
-          <span style="color: var(--muted); font-weight: 600;">${pct}%</span>
-        </div>
-        <div class="progress-bg" style="background: #edf0f5; height: 8px; border-radius: 4px; overflow: hidden; position: relative;">
-          <div class="progress-bar" style="width: ${pct}%; background: var(--azul); height: 100%; border-radius: 4px; transition: width 0.6s ease-out;"></div>
-        </div>
-      </div>
-    `;
-  }).join('');
+  canvas.style.display = 'block';
+  
+  // Destruir gráfico anterior se existir
+  if (categoriasPieChart) {
+    categoriasPieChart.destroy();
+  }
+  
+  // Extrair dados para o gráfico
+  const labels = lista.map(cat => esc(cat.categoria));
+  const data = lista.map(cat => parseFloat(cat.porcentagem || 0));
+  
+  // Paleta de cores
+  const colors = [
+    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
+    '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf',
+    '#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'
+  ];
+  
+  const backgroundColors = colors.slice(0, lista.length);
+  const borderColors = backgroundColors.map(color => color);
+  
+  // Criar gráfico de pizza
+  const ctx = canvas.getContext('2d');
+  categoriasPieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 2,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            font: {
+              size: 12,
+              weight: 500
+            },
+            padding: 15,
+            usePointStyle: true
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return context.label + ': ' + context.parsed + '%';
+            }
+          }
+        }
+      }
+    }
+  });
 }
 
 function renderEstoqueBaixo(lista) {
