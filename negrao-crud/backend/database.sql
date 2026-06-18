@@ -78,9 +78,9 @@ CREATE TABLE IF NOT EXISTS Usuario (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Inserir usuário administrador padrão (Senha: admin123)
--- Hash SHA-256 de 'admin123' é '240789146b9f213cf8aa7174fa7fae9e2f9d2c67690623a39e80f2d80d21c3b5'
+-- Hash SHA-256 de 'admin123' é '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'
 INSERT INTO Usuario (email, senha, nome) 
-VALUES ('admin@negrao.com.br', '240789146b9f213cf8aa7174fa7fae9e2f9d2c67690623a39e80f2d80d21c3b5', 'Administrador')
+VALUES ('admin@negrao.com.br', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'Administrador')
 ON DUPLICATE KEY UPDATE email = email;
 
 SELECT 'Banco criado com sucesso!' AS Resultado;

@@ -33,7 +33,7 @@ pool.getConnection()
       if (total === 0) {
         await conn.query(`
           INSERT INTO Usuario (email, senha, nome)
-          VALUES ('admin@negrao.com.br', '240789146b9f213cf8aa7174fa7fae9e2f9d2c67690623a39e80f2d80d21c3b5', 'Administrador')
+          VALUES ('admin@negrao.com.br', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'Administrador')
         `);
         console.log('MySQL: Usuário administrador padrão semeado com sucesso!');
       }
