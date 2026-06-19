@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard · Ferragens Negrão</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<!-- Loading -->
+<div id="loading"><div class="spinner"></div></div>
+
+<!-- Toasts -->
+<div id="toasts"></div>
+
+<!-- Shell -->
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div href="img/Logo.PNG">
+        <img src="img/Logo.PNG" alt="Logo" />
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-secao">Principal</div>
+      <a class="nav-item ativo" href="dashboard.html">
+        <div class="nav-icone">D</div>
+        <span>Dashboard</span>
+      </a>
+
+      <a class="nav-item" href="#">
+        <div class="nav-icone">R</div>
+        <span>Relatórios</span>
+      </a>
+
+      <div class="nav-sep"></div>
+      <div class="nav-secao">Cadastros</div>
+
+      <a class="nav-item" href="index.html">
+        <div class="nav-icone">P</div>
+        <span>Produtos</span>
+      </a>
+
+      <a class="nav-item" href="#">
+        <div class="nav-icone">E</div>
+        <span>Estoque</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-titulo">Ferragens Negrão</div>
+      <div class="topbar-sub">Sistema de Gestão · UniSenai</div>
+      <div class="topbar-avatar">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="conteudo">
+
+      <!-- Cabeçalho -->
+      <div class="pagina-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Visão Geral do Controle de Estoque</p>
+        </div>
+      </div>
+
+      <!-- Dashboard -->
+      <div class="painel-dashboard">
+        <a class="dashboard-block produtos-cadastrados" href="index.html">
+          <h1>Produtos Cadastrados</h1>
+          <div id="rodapeInfo"></div>
+        </a>
+      </div>
+
+      <!-- Atalhos -->
+      <div class="pagina-header">
+        <div>
+          <h1>Atalhos</h1>
+        </div>
+      </div>
+
+      <div class="painel-dashboard">
+        <a class="dashboard-block atalhos" href="index.html?cadastrarProduto=1">
+          <h1>+ Novo Produto</h1>
+        </a>
+
+        <a class="dashboard-block atalhos" href="relatorios.html">
+          <h1>Relatórios</h1>
+        </a>
+
+        <a class="dashboard-block atalhos" href="estoques.html">
+          <h1>Estoques</h1>
+        </a>
+
+        <a class="dashboard-block atalhos" href="usuarios.html">
+          <h1>Detalhes da Conta</h1>
+        </a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
