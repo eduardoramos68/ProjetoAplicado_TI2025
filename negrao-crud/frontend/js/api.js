@@ -68,3 +68,30 @@ const UsuarioAPI = {
   atualizar: (id, b)  => req('PUT',    `/usuarios/${id}`, b),
   excluir:   (id)     => req('DELETE', `/usuarios/${id}`),
 };
+
+const EstoqueAPI = {
+  listar:             ()       => req('GET',    '/estoque'),
+  listarEstoques:     ()       => req('GET',    '/estoque/estoques'),
+  porId:              (id)     => req('GET',    `/estoque/${id}`),
+  buscarEstoquePorId: (id)     => req('GET',    `/estoque/estoque/${id}`),
+  criar:              (b)      => req('POST',   '/estoque', b),
+  atualizar:          (id, b)  => req('PUT',    `/estoque/${id}`, b),
+  atualizarItem:      (id, b)  => req('PUT',    `/estoque/item/${id}`, b),
+  excluir:            (id)     => req('DELETE', `/estoque/${id}`),
+  excluirItem:        (id)     => req('DELETE', `/estoque/item/${id}`),
+};
+
+const LocalizacaoAPI = {
+  listar:    ()       => req('GET',    '/localizacao'),
+  porId:     (id)     => req('GET',    `/localizacao/${id}`),
+  criar:     (b)      => req('POST',   '/localizacao', b),
+  atualizar: (id, b)  => req('PUT',    `/localizacao/${id}`, b),
+  excluir:   (id)     => req('DELETE', `/localizacao/${id}`),
+};
+
+const MovimentacaoAPI = {
+  listar:        (params) => req('GET',  '/movimentacao?' + new URLSearchParams(params || {})),
+  entrada:       (b)      => req('POST', '/movimentacao/entrada', b),
+  saida:         (b)      => req('POST', '/movimentacao/saida',   b),
+  transferencia: (b)      => req('POST', '/movimentacao/transferencia', b),
+};
