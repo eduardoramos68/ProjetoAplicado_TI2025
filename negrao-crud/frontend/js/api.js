@@ -52,3 +52,19 @@ const DashboardAPI = {
 const AuthAPI = {
   login: (loginInput, senha) => req('POST', '/auth/login', { login: loginInput, senha }),
 };
+
+const PerfilAPI = {
+  listar:    ()       => req('GET',    '/perfis'),
+  porId:     (id)     => req('GET',    `/perfis/${id}`),
+  criar:     (b)      => req('POST',   '/perfis', b),
+  atualizar: (id, b)  => req('PUT',    `/perfis/${id}`, b),
+  excluir:   (id)     => req('DELETE', `/perfis/${id}`),
+};
+
+const UsuarioAPI = {
+  listar:    ()       => req('GET',    '/usuarios'),
+  porId:     (id)     => req('GET',    `/usuarios/${id}`),
+  criar:     (b)      => req('POST',   '/usuarios', b),
+  atualizar: (id, b)  => req('PUT',    `/usuarios/${id}`, b),
+  excluir:   (id)     => req('DELETE', `/usuarios/${id}`),
+};

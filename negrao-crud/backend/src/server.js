@@ -19,6 +19,9 @@ app.use('/api/dashboard', require('./routes/dashboard'));
 
 app.use('/api/auth', require('./routes/auth'));
 
+app.use('/api/perfis',   require('./routes/perfis'));
+app.use('/api/usuarios', require('./routes/usuarios'));
+
 // Rota padrão para servir o index.html caso acesse caminhos indefinidos (SPA Friendly)
 app.get('*', (req, res, next) => {
   if (req.path.startsWith('/api')) return next();
@@ -31,4 +34,6 @@ app.listen(PORT, () => {
   console.log(`Servidor: http://localhost:${PORT}`);
   console.log(`Produtos: http://localhost:${PORT}/api/produtos`);
   console.log(`Sistema: http://localhost:${PORT}/login.html`);
+  console.log(`Perfis:   http://localhost:${PORT}/api/perfis`);
+  console.log(`Usuários: http://localhost:${PORT}/api/usuarios`);
 });
