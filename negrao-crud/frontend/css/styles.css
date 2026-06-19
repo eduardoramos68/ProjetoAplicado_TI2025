@@ -9,7 +9,7 @@
 
 :root {
   --sidebar-bg:   #1b2a3b;
-  --sidebar-w:    210px;
+  --sidebar-w:    260px;
   --topbar-bg:    #1b2a3b;
   --topbar-h:     56px;
   --azul:         #1e4db7;
@@ -66,7 +66,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; font-size: 14px; co
   padding: 10px 20px;
   color: rgba(255,255,255,.6);
   text-decoration: none;
-  font-size: 13.5px; font-weight: 500;
+  font-size: 15px; font-weight: 500;
   cursor: pointer;
   transition: background .15s, color .15s;
   border-left: 3px solid transparent;
@@ -127,6 +127,41 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; font-size: 14px; co
   transition: background .15s;
 }
 .btn-novo:hover { background: var(--azul-h); }
+
+/* ── DASHBOARD ── */
+.painel-dashboard {
+  background: var(--branco);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: var(--sombra);
+  display: flex; flex-direction: row; gap: 22px;
+  
+}
+
+.dashboard-block {
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  width: 380px; height: 210px; padding: 14px;
+  color: white; text-decoration: none;
+}
+
+.produtos-cadastrados {
+  background: var(--azul);
+}
+
+.produtos-baixos {
+  background: #f5d32f;
+}
+
+.produtos-zerados {
+  background: var(--vermelho);
+}
+
+.atalhos {
+  background: #f0f2f5;
+  color: black; text-decoration: none; cursor: pointer;
+}
 
 /* ── PAINEL FILTROS ── */
 .painel-filtros {
