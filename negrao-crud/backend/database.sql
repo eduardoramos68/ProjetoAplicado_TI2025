@@ -55,6 +55,53 @@ CREATE TABLE IF NOT EXISTS Usuario_Perfil (
   FOREIGN KEY (idPerfil) REFERENCES Perfil(idPerfil)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 
+-- LOCALIZACAO
+CREATE TABLE IF NOT EXISTS Localizacao (
+  idLocalizacao INT         NOT NULL AUTO_INCREMENT,
+  nome          VARCHAR(45) NOT NULL,
+  setor         VARCHAR(45) NOT NULL,
+  PRIMARY KEY (idLocalizacao)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ESTOQUE
+CREATE TABLE IF NOT EXISTS Estoque (
+  idEstoque      INT         NOT NULL AUTO_INCREMENT,
+  nome           VARCHAR(45) NOT NULL,
+  localizacao_id INT         NOT NULL,
+  PRIMARY KEY (idEstoque),
+  FOREIGN KEY (localizacao_id) REFERENCES Localizacao(idLocalizacao)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ESTOQUE_PRODUTO
+CREATE TABLE IF NOT EXISTS Estoque_Produto (
+  idEstoque_Produto INT NOT NULL AUTO_INCREMENT,
+  estoque_id        INT NOT NULL,
+  produto_id        INT NOT NULL,
+  quantidade        INT NOT NULL DEFAULT 0,
+  quantidade_min    INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (idEstoque_Produto),
+  FOREIGN KEY (estoque_id) REFERENCES Estoque(idEstoque),
+  FOREIGN KEY (produto_id) REFERENCES Produto(idProduto)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- MOVIMENTACAO
+CREATE TABLE IF NOT EXISTS Movimentacao (
+  idMovimentacao     INT          NOT NULL AUTO_INCREMENT,
+  produto_id         INT          NOT NULL,
+  usuario_id         INT          NOT NULL,
+  tipo               INT          NOT NULL COMMENT '1=Entrada, 2=Saida, 3=Transferencia',
+  quantidade         INT          NOT NULL,
+  data_movimentacao  DATE         NOT NULL DEFAULT (CURRENT_DATE),
+  estoque_origem_id  INT          DEFAULT NULL,
+  estoque_destino_id INT          DEFAULT NULL,
+  observacao         VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (idMovimentacao),
+  FOREIGN KEY (produto_id)         REFERENCES Produto(idProduto),
+  FOREIGN KEY (usuario_id)         REFERENCES Usuario(idUsuario),
+  FOREIGN KEY (estoque_origem_id)  REFERENCES Estoque(idEstoque),
+  FOREIGN KEY (estoque_destino_id) REFERENCES Estoque(idEstoque)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- Inserir usuário administrador padrão (Senha: admin123)
 -- Hash SHA-256 de 'admin123' é '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'
 INSERT INTO Usuario (email, senha, nome) 

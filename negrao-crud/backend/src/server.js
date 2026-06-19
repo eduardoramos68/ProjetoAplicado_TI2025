@@ -21,6 +21,9 @@ app.use('/api/auth', require('./routes/auth'));
 
 app.use('/api/perfis',   require('./routes/perfis'));
 app.use('/api/usuarios', require('./routes/usuarios'));
+app.use('/api/estoque',      require('./routes/estoque'));
+app.use('/api/localizacao',  require('./routes/localizacao'));
+app.use('/api/movimentacao', require('./routes/movimentacao'));
 
 // Rota padrão para servir o index.html caso acesse caminhos indefinidos (SPA Friendly)
 app.get('*', (req, res, next) => {
@@ -36,4 +39,7 @@ app.listen(PORT, () => {
   console.log(`Sistema: http://localhost:${PORT}/login.html`);
   console.log(`Perfis:   http://localhost:${PORT}/api/perfis`);
   console.log(`Usuários: http://localhost:${PORT}/api/usuarios`);
+  console.log(`Estoque:       http://localhost:${PORT}/api/estoque`);
+  console.log(`Localizações:  http://localhost:${PORT}/api/localizacao`);
+  console.log(`Movimentações: http://localhost:${PORT}/api/movimentacao`);
 });
