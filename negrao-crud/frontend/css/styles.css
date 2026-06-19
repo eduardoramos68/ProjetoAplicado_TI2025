@@ -1,6 +1,6 @@
 /* ============================================================
-   Ferragens Negrão — CRUD Produtos v2
-   Fiel ao layout da imagem de referência
+   Ferragens Negrï¿½o ï¿½ CRUD Produtos v2
+   Fiel ao layout da imagem de referï¿½ncia
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -106,10 +106,10 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; font-size: 14px; co
 }
 .topbar-avatar svg { width: 18px; height: 18px; fill: rgba(255,255,255,.8); }
 
-/* -- CONTEÚDO -- */
+/* -- CONTEï¿½DO -- */
 .conteudo { flex: 1; padding: 28px 32px; overflow-y: auto; }
 
-/* -- HEADER PÁGINA -- */
+/* -- HEADER Pï¿½GINA -- */
 .pagina-header {
   display: flex; align-items: flex-start; justify-content: space-between;
   margin-bottom: 22px;
@@ -117,7 +117,7 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; font-size: 14px; co
 .pagina-header h1 { font-size: 22px; font-weight: 700; color: var(--texto); }
 .pagina-header p  { font-size: 13px; color: var(--muted); margin-top: 3px; }
 
-/* -- BOTÃO PRIMÁRIO -- */
+/* -- BOTï¿½O PRIMï¿½RIO -- */
 .btn-novo {
   background: var(--azul); color: #fff;
   border: none; border-radius: var(--radius);
@@ -127,6 +127,34 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; font-size: 14px; co
   transition: background .15s;
 }
 .btn-novo:hover { background: var(--azul-h); }
+
+/* â”€â”€ DASHBOARD â”€â”€ */
+.painel-dashboard {
+  background: var(--branco);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: var(--sombra);
+  display: flex; flex-direction: row; gap: 22px;
+  
+}
+
+.dashboard-block {
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  width: 380px; height: 210px; padding: 14px;
+  color: white; text-decoration: none;
+}
+
+.produtos-cadastrados {
+  background: var(--azul);
+}
+
+.atalhos {
+  background: #f0f2f5;
+  color: black; text-decoration: none; cursor: pointer;
+}
+
 
 /* -- PAINEL FILTROS -- */
 .painel-filtros {
@@ -199,7 +227,7 @@ tbody tr:hover { background: #f7f9fc; }
 
 tbody td { padding: 14px 16px; vertical-align: middle; }
 
-/* colunas específicas */
+/* colunas especï¿½ficas */
 .td-id    { color: var(--muted); font-size: 13px; width: 50px; }
 .td-sku   { width: 110px; }
 .td-nome  { font-weight: 600; min-width: 150px; }
@@ -217,7 +245,7 @@ tbody td { padding: 14px 16px; vertical-align: middle; }
   white-space: nowrap;
 }
 
-/* -- BOTÕES AÇÃO -- */
+/* -- BOTï¿½ES Aï¿½ï¿½O -- */
 .acoes-grupo { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
 
 .btn-acao {
@@ -238,7 +266,7 @@ tbody td { padding: 14px 16px; vertical-align: middle; }
 /* -- VAZIO -- */
 .td-vazio { text-align: center; padding: 52px 20px !important; color: var(--muted); }
 
-/* -- RODAPÉ -- */
+/* -- RODAPï¿½ -- */
 .tabela-rodape {
   padding: 12px 20px;
   border-top: 1px solid var(--borda);
@@ -386,7 +414,7 @@ img {
 }
 
 /* ============================================================
-   ESTILOS ADICIONAIS - DASHBOARD / RELATÓRIOS
+   ESTILOS ADICIONAIS - DASHBOARD / RELATï¿½RIOS
    ============================================================ */
 
 .dashboard-cards {
