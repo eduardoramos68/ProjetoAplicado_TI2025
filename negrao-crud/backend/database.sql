@@ -108,6 +108,8 @@ INSERT INTO Usuario (email, senha, nome)
 VALUES ('admin@negrao.com.br', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'Administrador')
 ON DUPLICATE KEY UPDATE email = email;
 
+INSERT INTO Usuario_Perfil (idUsuario, idPerfil) VALUES (1, 1);
+
 --Produtos iniciais
 INSERT INTO Produto (sku, nome, descricao, preco, categoria, marca, unidadeMedida, estoque) VALUES
 ('FERR-001', 'Martelo Cabo de Madeira',    'Martelo de bola 27mm com cabo de madeira', 45.90, 'Ferramentas Manuais', 'Tramontina', 'un', 1),
