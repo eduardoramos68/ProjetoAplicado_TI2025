@@ -102,15 +102,7 @@ CREATE TABLE IF NOT EXISTS Movimentacao (
   FOREIGN KEY (estoque_destino_id) REFERENCES Estoque(idEstoque)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Inserir usuário administrador padrão (Senha: admin123)
--- Hash SHA-256 de 'admin123' é '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'
-INSERT INTO Usuario (email, senha, nome) 
-VALUES ('admin@negrao.com.br', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'Administrador')
-ON DUPLICATE KEY UPDATE email = email;
-
-INSERT INTO Usuario_Perfil (idUsuario, idPerfil) VALUES (1, 1);
-
---Produtos iniciais
+-- Produtos iniciais
 INSERT INTO Produto (sku, nome, descricao, preco, categoria, marca, unidadeMedida, estoque) VALUES
 ('FERR-001', 'Martelo Cabo de Madeira',    'Martelo de bola 27mm com cabo de madeira', 45.90, 'Ferramentas Manuais', 'Tramontina', 'un', 1),
 ('FERR-002', 'Chave de Fenda Phillips #2',  'Chave de fenda phillips tamanho 2, cabo emborrachado', 12.50, 'Ferramentas Manuais', 'Stanley', 'un', 1),
@@ -137,5 +129,13 @@ INSERT INTO Localizacao (nome, setor) VALUES
 INSERT INTO Estoque (nome, localizacao_id) VALUES
 ('Almoxarifado', 1),
 ('Loja',         2);
+
+-- Inserir usuário administrador padrão (Senha: admin123)
+-- Hash SHA-256 de 'admin123' é '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9'
+INSERT INTO Usuario (email, senha, nome) 
+VALUES ('admin@negrao.com.br', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'Administrador')
+ON DUPLICATE KEY UPDATE email = email;
+
+INSERT INTO Usuario_Perfil (idUsuario, idPerfil) VALUES (1, 1);
 
 SELECT 'Banco criado com sucesso!' AS Resultado;
