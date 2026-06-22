@@ -366,7 +366,6 @@ async function editarEst(id) {
     const e = await EstoqueAPI.buscarEstoquePorId(id);
     editandoEstId = id;
     document.getElementById('eNome').value = e.nomeEstoque || '';
-    document.getElementById('eLocalizacao').value = e.idLocalizacao || '';
     document.getElementById('tituloFormEst').textContent = 'Editar Estoque';
     document.getElementById('eBtnCancelar').style.display = '';
     document.getElementById('eBtnSalvar').textContent = 'Atualizar';
